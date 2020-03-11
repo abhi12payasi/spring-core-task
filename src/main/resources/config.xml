@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="com.app.bean.Department" name="department">
+        <property name="name">
+            <value>IT</value>
+        </property>
+        <property name="createdOn">
+            <bean class="com.app.bean.DateConverter">
+                <property name="input" value="09-03-2020 | dd-mm-yyyy"></property>
+            </bean>
+        </property>
+    </bean>
+    <bean class="com.app.bean.Employee" name="employee"> <!--init-method="hi" destroy-method="bye"-->
+        <property name="name" value="Abhishek Payasi"/>
+        <property name="age" value="24"/>
+        <property name="salary" value="64500"/>
+        <property name="taskList">
+            <list>
+                <value>Development</value>
+                <value>Deployment</value>
+                <value>Maintenance</value>
+            </list>
+        </property>
+        <property name="department">
+            <ref bean="department"/>
+        </property>
+    </bean>
+</beans>
